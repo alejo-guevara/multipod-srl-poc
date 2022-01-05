@@ -1,0 +1,60 @@
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "set",
+    "params": {
+        "commands": [
+            {
+                "action": "update",
+                "path": "/network-instance[name=default]/protocols/bgp",
+                "value": {
+            "group": [
+              {
+                {% if bgp_peer_groups.peer_name == 'iBGP-core' %}
+                "group-name": "{{ bgp_peer_group.peer_group }}",
+                "admin-state": "enable",
+                {% else %}
+                "group-name": "{{ bgp.peer_group }}",
+                "admin-state": "enable",
+                "export-policy": "export-all",
+                "import-policy": "import-all",
+                "peer-as": {{bgp.local_as}},
+                "evpn": {
+                  "admin-state": "enable"
+                },
+                "local-as": [
+                  {
+                    "as-number": "{{ bgp.local_as}}"
+                  }
+                ],
+                 "route-reflector": {
+                  "client": true,
+                  "cluster-id": "{{ bgp.cluster_id }}"
+                },
+                "transport": {
+                  "local-address": "{{ bgp.local_address }}"
+                }
+                {% endif %}
+              }
+             
+            ],
+                  
+                   
+                    "neighbor": [
+                       {% for bgp_neighbor in bgp_neighbors %}
+            {
+                            "peer-address": "{{ bgp_neighbor.neighbor_ip }}",
+                            "admin-state": "enable",            
+                          
+                            "peer-group": "{{ bgp_neighbor.peer_group }}",
+                              "transport": {
+                                "local-address": "{{ bgp.local_address}}"
+                                }
+                        }{% if not loop.last %} , {% endif %}
+                        {% endfor %}
+                    ]
+                }
+                }
+            ]
+        }
+    }

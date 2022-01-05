@@ -1,0 +1,19 @@
+---
+- name: Configure Leaves
+  hosts: leafs-l3evpn-mh
+  gather_facts: no
+  roles:
+  - l3evpn_mh_leaf
+
+- name: Configure DCGWs
+  hosts: dcgws
+  gather_facts: no
+  roles:
+  - l3evpn-mh_dcgw
+ 
+- name: Configure RRs
+  hosts: rrs
+  gather_facts: no
+  roles:
+  - l3evpn_rr
+

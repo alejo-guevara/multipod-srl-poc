@@ -1,0 +1,66 @@
+all:
+  children:
+    linux:
+      hosts:
+        client11:
+          ansible_host: 171.0.0.31
+        client112:
+          ansible_host: 171.0.0.32
+        client12:
+          ansible_host: 171.0.0.33
+        client13:
+          ansible_host: 171.0.0.34
+        client134:
+          ansible_host: 171.0.0.35
+        client14:
+          ansible_host: 171.0.0.36
+        client21:
+          ansible_host: 171.0.0.41
+        client212:
+          ansible_host: 171.0.0.42
+        client22:
+          ansible_host: 171.0.0.43
+        client23:
+          ansible_host: 171.0.0.44
+        client234:
+          ansible_host: 171.0.0.45
+        client24:
+          ansible_host: 171.0.0.46
+        grafana:
+          ansible_host: 171.0.0.50
+        influxdb:
+          ansible_host: 171.0.0.52
+        telegraf:
+          ansible_host: 171.0.0.51
+    srl:
+      hosts:
+        pod1-dcgw1:
+          ansible_host: 171.1.1.1
+        pod1-leaf1:
+          ansible_host: 171.1.0.1
+        pod1-leaf2:
+          ansible_host: 171.1.0.2
+        pod1-leaf3:
+          ansible_host: 171.1.0.3
+        pod1-leaf4:
+          ansible_host: 171.1.0.4
+        pod1-spine1:
+          ansible_host: 171.1.1.0
+        pod1-spine2:
+          ansible_host: 171.1.2.0
+        pod2-dcgw1:
+          ansible_host: 171.2.1.1
+        pod2-leaf1:
+          ansible_host: 171.2.0.1
+        pod2-leaf2:
+          ansible_host: 171.2.0.2
+        pod2-leaf3:
+          ansible_host: 171.2.0.3
+        pod2-leaf4:
+          ansible_host: 171.2.0.4
+        pod2-spine1:
+          ansible_host: 171.2.1.0
+        pod2-spine2:
+          ansible_host: 171.2.2.0
+        rr:
+          ansible_host: 171.0.0.255

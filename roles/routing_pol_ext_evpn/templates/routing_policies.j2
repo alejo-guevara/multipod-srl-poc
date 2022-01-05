@@ -1,0 +1,57 @@
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "set",
+    "params": {
+        "commands": [
+            {
+                "action": "update",
+                "path": "/routing-policy",
+                "value": {
+                    "prefix-set": [
+                       {
+                            "name": "{{ prefix_name.prefix_set_name }}",
+                            "prefix": [
+                            {% for prefix in prefix_ip %}
+                            {
+                                "ip-prefix": "{{ prefix.prefix_set_ip }}",
+                                "mask-length-range": "{{ prefix.mask_length_range }}"
+                            }{% if not loop.last %},{% endif %}
+                                {% endfor %}
+                            ]
+                        }
+                    ],
+                    "policy": [
+                      
+                        {
+                            "name": "{{ routing_policy.policy_name }}",
+                            "default-action": {
+                                "accept": {}
+                            },
+                            "statement": [
+                               {% for statment in statments %}   
+                               {
+                                "sequence-id": {{ statment.seq_id }},
+                                "match": {
+                                  {% if statment.prefix_set_name is defined %} "prefix-set": "{{ statment.prefix_set_name }}"
+                                  {% else %} 
+                                  "bgp": {
+                                        "evpn": { 
+                                           "route-type": [{{ statment.route_type }}]
+                                               } 
+                                         }
+                                  {% endif %}
+                                },
+                                "action": {
+                                "reject": {}
+                                }
+                            }{% if not loop.last %},{% endif %}
+                                {% endfor %}
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

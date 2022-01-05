@@ -1,0 +1,25 @@
+---
+- name: Configure Leafs
+  hosts: leafs
+  gather_facts: no
+  roles:
+  - underlay
+
+- name: Configure Spines
+  hosts: spines
+  gather_facts: no
+  roles:
+  - underlay
+
+- name: Configure DCGWs
+  hosts: dcgws
+  gather_facts: no
+  roles:
+  - underlay
+
+- name: Configure Route Reflector
+  hosts: rrs
+  gather_facts: no
+  roles:
+  - underlay
+...

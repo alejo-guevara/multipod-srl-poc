@@ -1,0 +1,29 @@
+routing_policy:
+    - policy_name: export-all   
+      default-action : accept
+    - policy_name: import-all   
+      default-action : accept 
+
+bgp_peer_groups:
+  - peer_group : iBGP-evpn
+    cluster : True
+  - peer_group : iBGP-rr
+    cluster : False
+
+bgp:
+  network_instance: default
+  local_as: 65500 
+  local_address: 100.2.0.1
+  peer_group : iBGP-evpn
+  cluster_id: 0.0.0.22
+
+bgp_neighbors:
+  - neighbor_ip : 101.2.2.2
+    peer_group : iBGP-evpn
+    remote_as: 65500
+  - neighbor_ip : 101.2.2.4
+    peer_group : iBGP-evpn
+    remote_as: 65500
+  - neighbor_ip : 100.0.0.1
+    peer_group : iBGP-rr
+    remote_as: 65500

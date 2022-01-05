@@ -1,0 +1,33 @@
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "set",
+    "params": {
+        "commands": [
+            {
+                "action": "update",
+                "path": "/routing-policy",
+                "value": {
+                   
+                    "policy": [
+                      
+                        {
+                                "name": "export-all",
+                                "default-action": {
+                                "accept": {
+                                }
+                                }
+                            },
+                            {
+                                "name": "import-all",
+                                "default-action": {
+                                "accept": {
+                                }
+                                }
+                            }
+                    ]
+                }
+            }
+        ]
+    }
+}

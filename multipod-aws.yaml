@@ -1,0 +1,181 @@
+name: multipod-aws
+prefix: ""
+mgmt:
+  network: oob_mgmt                # management network name
+  ipv4_subnet: 171.0.0.0/8       # ipv4 range 
+
+topology:
+  kinds:
+    srl:
+      type: ixrd2
+      image: ghcr.io/nokia/srlinux:latest
+    linux:
+      image: ghcr.io/hellt/network-multitool
+  nodes:
+    rr:
+      kind: srl
+      type: ixr6
+      mgmt_ipv4: 171.0.0.255
+    pod1-dcgw1:
+      kind: srl
+      type: ixr6
+      mgmt_ipv4: 171.1.1.1
+    pod2-dcgw1:
+      kind: srl
+      type: ixr6
+      mgmt_ipv4: 171.2.1.1
+    pod1-spine1:
+      kind: srl
+      type: ixrd3
+      mgmt_ipv4: 171.1.1.0
+    pod1-spine2:
+      kind: srl
+      type: ixrd3
+      mgmt_ipv4: 171.1.2.0
+    pod1-leaf1:
+      kind: srl
+      mgmt_ipv4: 171.1.0.1
+    pod1-leaf2:
+      kind: srl
+      mgmt_ipv4: 171.1.0.2
+    pod1-leaf3:
+      kind: srl
+      mgmt_ipv4: 171.1.0.3
+    pod1-leaf4:
+      kind: srl
+      mgmt_ipv4: 171.1.0.4
+    client11:
+      kind: linux
+      mgmt_ipv4: 171.0.0.31
+    client112:
+      kind: linux
+      mgmt_ipv4: 171.0.0.32
+    client12:
+      kind: linux
+      mgmt_ipv4: 171.0.0.33
+    client13:
+      kind: linux
+      mgmt_ipv4: 171.0.0.34
+    client134:
+      kind: linux
+      mgmt_ipv4: 171.0.0.35
+    client14:
+      kind: linux
+      mgmt_ipv4: 171.0.0.36
+
+    pod2-spine1:
+      kind: srl
+      type: ixrd3
+      mgmt_ipv4: 171.2.1.0
+    pod2-spine2:
+      kind: srl
+      type: ixrd3
+      mgmt_ipv4: 171.2.2.0
+    pod2-leaf1:
+      kind: srl
+      mgmt_ipv4: 171.2.0.1
+    pod2-leaf2:
+      kind: srl
+      mgmt_ipv4: 171.2.0.2
+    pod2-leaf3:
+      kind: srl
+      mgmt_ipv4: 171.2.0.3
+    pod2-leaf4:
+      kind: srl
+      mgmt_ipv4: 171.2.0.4
+    client21:
+      kind: linux
+      mgmt_ipv4: 171.0.0.41
+    client212:
+      kind: linux
+      mgmt_ipv4: 171.0.0.42
+    client22:
+      kind: linux
+      mgmt_ipv4: 171.0.0.43
+    client23:
+      kind: linux
+      mgmt_ipv4: 171.0.0.44
+    client234:
+      kind: linux
+      mgmt_ipv4: 171.0.0.45
+    client24:
+      kind: linux
+      mgmt_ipv4: 171.0.0.46
+
+  ###### TELEMETRY STACK ######
+
+    grafana: # Added, connect via mgmt network
+      kind: linux
+      image: grafana/grafana:8.1.8
+      env:
+        #http_proxy: http://135.245.48.34:8000
+        #https_proxy: http://135.245.48.34:8000
+        GF_INSTALL_PLUGINS: agenty-flowcharting-panel,agenty-flowcharting-panel
+      binds:
+        - configs/grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
+        - configs/grafana/dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro
+        - configs/grafana/dashboards:/var/lib/grafana/dashboards
+      mgmt_ipv4: 171.0.0.50 # Pick a fixed IP
+      #mgmt_ipv6: 2001:172:20:20::10
+      ports:
+        - 3000:3000
+
+
+    telegraf: # Added, connect via mgmt network
+      kind: linux
+      image: telegraf
+      binds:
+        - configs/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      mgmt_ipv4: 171.0.0.51 # Pick a fixed IP
+      #mgmt_ipv6: 2001:172:20:20::11
+
+
+    influxdb: # Added, connect via mgmt network
+      kind: linux
+      image: influxdb:1.8
+      mgmt_ipv4: 171.0.0.52 # Pick a fixed IP
+      #mgmt_ipv6: 2001:172:20:20::12
+      ports:
+        - 8086:8086
+
+  links:
+    - endpoints: ["rr:e1-1", "pod1-dcgw1:e1-3"]
+    - endpoints: ["rr:e1-2", "pod2-dcgw1:e1-3"]
+    - endpoints: ["pod1-spine1:e1-1", "pod1-dcgw1:e1-1"]
+    - endpoints: ["pod1-spine2:e1-1", "pod1-dcgw1:e1-2"]
+    - endpoints: ["pod1-leaf1:e1-1", "pod1-spine1:e1-11"]
+    - endpoints: ["pod1-leaf1:e1-2", "pod1-spine2:e1-11"]
+    - endpoints: ["pod1-leaf2:e1-1", "pod1-spine1:e1-12"]
+    - endpoints: ["pod1-leaf2:e1-2", "pod1-spine2:e1-12"]
+    - endpoints: ["pod1-leaf3:e1-1", "pod1-spine1:e1-13"]
+    - endpoints: ["pod1-leaf3:e1-2", "pod1-spine2:e1-13"]
+    - endpoints: ["pod1-leaf4:e1-1", "pod1-spine1:e1-14"]
+    - endpoints: ["pod1-leaf4:e1-2", "pod1-spine2:e1-14"]
+    - endpoints: ["client11:eth1", "pod1-leaf1:e1-11"]
+    - endpoints: ["client112:eth1", "pod1-leaf1:e1-12"]
+    - endpoints: ["client112:eth2", "pod1-leaf2:e1-12"]
+    - endpoints: ["client12:eth1", "pod1-leaf2:e1-11"]
+    - endpoints: ["client13:eth1", "pod1-leaf3:e1-11"]
+    - endpoints: ["client134:eth1", "pod1-leaf3:e1-12"]
+    - endpoints: ["client134:eth2", "pod1-leaf4:e1-12"]
+    - endpoints: ["client14:eth1", "pod1-leaf4:e1-11"]
+
+    - endpoints: ["pod2-spine1:e1-1", "pod2-dcgw1:e1-1"]
+    - endpoints: ["pod2-spine2:e1-1", "pod2-dcgw1:e1-2"]
+    - endpoints: ["pod2-leaf1:e1-1", "pod2-spine1:e1-11"]
+    - endpoints: ["pod2-leaf1:e1-2", "pod2-spine2:e1-11"]
+    - endpoints: ["pod2-leaf2:e1-1", "pod2-spine1:e1-12"]
+    - endpoints: ["pod2-leaf2:e1-2", "pod2-spine2:e1-12"]
+    - endpoints: ["pod2-leaf3:e1-1", "pod2-spine1:e1-13"]
+    - endpoints: ["pod2-leaf3:e1-2", "pod2-spine2:e1-13"]
+    - endpoints: ["pod2-leaf4:e1-1", "pod2-spine1:e1-14"]
+    - endpoints: ["pod2-leaf4:e1-2", "pod2-spine2:e1-14"]
+    - endpoints: ["client21:eth1", "pod2-leaf1:e1-11"]
+    - endpoints: ["client212:eth1", "pod2-leaf1:e1-12"]
+    - endpoints: ["client212:eth2", "pod2-leaf2:e1-12"]
+    - endpoints: ["client22:eth1", "pod2-leaf2:e1-11"]
+    - endpoints: ["client23:eth1", "pod2-leaf3:e1-11"]
+    - endpoints: ["client234:eth1", "pod2-leaf3:e1-12"]
+    - endpoints: ["client234:eth2", "pod2-leaf4:e1-12"]
+    - endpoints: ["client24:eth1", "pod2-leaf4:e1-11"]
+

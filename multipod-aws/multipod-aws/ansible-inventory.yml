@@ -1,0 +1,66 @@
+all:
+  children:
+    linux:
+      hosts:
+        multipod-aws-client11:
+          ansible_host: 171.0.0.31
+        multipod-aws-client112:
+          ansible_host: 171.0.0.32
+        multipod-aws-client12:
+          ansible_host: 171.0.0.33
+        multipod-aws-client13:
+          ansible_host: 171.0.0.34
+        multipod-aws-client134:
+          ansible_host: 171.0.0.35
+        multipod-aws-client14:
+          ansible_host: 171.0.0.36
+        multipod-aws-client21:
+          ansible_host: 171.0.0.41
+        multipod-aws-client212:
+          ansible_host: 171.0.0.42
+        multipod-aws-client22:
+          ansible_host: 171.0.0.43
+        multipod-aws-client23:
+          ansible_host: 171.0.0.44
+        multipod-aws-client234:
+          ansible_host: 171.0.0.45
+        multipod-aws-client24:
+          ansible_host: 171.0.0.46
+        multipod-aws-grafana:
+          ansible_host: 171.0.0.50
+        multipod-aws-influxdb:
+          ansible_host: 171.0.0.52
+        multipod-aws-telegraf:
+          ansible_host: 171.0.0.51
+    srl:
+      hosts:
+        multipod-aws-pod1-dcgw1:
+          ansible_host: 171.1.1.1
+        multipod-aws-pod1-leaf1:
+          ansible_host: 171.1.0.1
+        multipod-aws-pod1-leaf2:
+          ansible_host: 171.1.0.2
+        multipod-aws-pod1-leaf3:
+          ansible_host: 171.1.0.3
+        multipod-aws-pod1-leaf4:
+          ansible_host: 171.1.0.4
+        multipod-aws-pod1-spine1:
+          ansible_host: 171.1.1.0
+        multipod-aws-pod1-spine2:
+          ansible_host: 171.1.2.0
+        multipod-aws-pod2-dcgw1:
+          ansible_host: 171.2.1.1
+        multipod-aws-pod2-leaf1:
+          ansible_host: 171.2.0.1
+        multipod-aws-pod2-leaf2:
+          ansible_host: 171.2.0.2
+        multipod-aws-pod2-leaf3:
+          ansible_host: 171.2.0.3
+        multipod-aws-pod2-leaf4:
+          ansible_host: 171.2.0.4
+        multipod-aws-pod2-spine1:
+          ansible_host: 171.2.1.0
+        multipod-aws-pod2-spine2:
+          ansible_host: 171.2.2.0
+        multipod-aws-rr:
+          ansible_host: 171.0.0.255

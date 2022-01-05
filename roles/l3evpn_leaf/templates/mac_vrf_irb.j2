@@ -1,0 +1,77 @@
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "set",
+    "params": {
+        "commands": [
+              {% for mac_vrf in l2evpn.network_instance %}
+            {
+
+                "action": "update",
+              
+                "path": "/network-instance[name={{mac_vrf.name}}]",
+                "value": {
+
+
+                    "name": "{{mac_vrf.name}}",
+                   "type": "mac-vrf",
+                    "admin-state": "enable",
+                    "interface": [
+                        {% for interface in mac_vrf.vlan_interfaces +  mac_vrf.irb_interfaces  %}
+                            {
+                            "name": "{{interface.name}}.{{interface.index}}"
+                        }
+                        {% if not loop.last %} ,            {% endif %}
+                          {% endfor %}
+                        
+                    ],
+                  
+
+                  "vxlan-interface": [
+                      
+                         {% for evpn in mac_vrf.bgp_evpn %}
+{
+                            "name": "{{evpn.vxlan_interface}}"
+                        }{% if not loop.last %} ,            {% endif %}
+                        {% endfor %}
+                    
+                  ],
+      "protocols": {
+        "bgp-evpn": {
+            {% for evpn in mac_vrf.bgp_evpn %}
+
+          "bgp-instance": [
+            {
+              "id": {{evpn.bgp_instance}},
+              "admin-state": "enable",
+              "vxlan-interface": "{{evpn.vxlan_interface}}",
+              "evi": {{evpn.evi}},
+              "ecmp": 2
+            } {% endfor %}
+          ]
+          
+        },
+        "bgp-vpn": {
+                        {% for vpn in mac_vrf.bgp_vpn %}
+                    "bgp-instance": [
+                        {
+                        "id": {{vpn.bgp_instance}},
+                        "route-target": {
+                            "export-rt": "target:{{vpn.export_rt}}",
+                            "import-rt": "target:{{vpn.import_rt}}"
+                        }
+                        }
+                        {% endfor %}
+                    ]
+
+                    }
+                }
+                            
+                    
+                }
+           
+            } {% if not loop.last %} ,            {% endif %}
+              {% endfor %}
+        ]
+    }
+}

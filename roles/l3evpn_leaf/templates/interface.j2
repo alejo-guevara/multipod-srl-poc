@@ -1,0 +1,34 @@
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "set",
+    "params": {
+        "commands": [
+            {% for interface in interfaces %}
+            {
+                "action": "update",
+                "path": "/interface[name={{interface.name}}]",
+                "value": {
+                    "name": "{{interface.name}}",
+                    "admin-state": "enable",
+                    "subinterface": [
+                        {
+                            "index":{{interface.index}} ,
+                            "admin-state": "enable",
+                            "ipv4": {
+                                "address": [
+                                    {
+                                        "ip-prefix": "{{interface.ipv4_address_prefix}}"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }{% if not loop.last %} ,
+            {% endif %}
+              {% endfor %}     
+               
+        ]
+    }
+}

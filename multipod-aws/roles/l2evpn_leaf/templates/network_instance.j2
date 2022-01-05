@@ -1,0 +1,24 @@
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "set",
+    "params": {
+        "commands": [
+            {
+                "action": "update",
+                "path": "/network-instance[name=default]",
+                "value": {
+                    "admin-state": "enable",
+                    "interface": [
+                        {% for interface in interfaces %}
+                            {
+                            "name": "{{interface.name}}.{{interface.index}}"
+                        }{% if not loop.last %} ,            {% endif %}
+                        {% endfor %}
+                    ]
+                }
+            }
+          
+        ]
+    }
+}

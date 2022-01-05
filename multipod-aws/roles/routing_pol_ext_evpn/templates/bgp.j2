@@ -1,0 +1,25 @@
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "set",
+    "params": {
+        "commands": [
+            {
+                "action": "update",
+                "path": "/network-instance[name=default]/protocols/bgp",
+                "value": {
+                    "neighbor": [
+                       {% for bgp_neighbor in bgp_neighbors %}
+                           {
+                            "peer-address": "{{ bgp_neighbor.neighbor_ip }}",
+                            "import-policy": "{{ routing_policy.policy_name }}"
+                            }
+                        {% if not loop.last %} ,
+                         {% endif %}
+                         {% endfor %}
+                    ]
+                }
+                }
+            ]
+        }
+    }

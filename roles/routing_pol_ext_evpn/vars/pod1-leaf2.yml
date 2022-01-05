@@ -1,0 +1,20 @@
+
+routing_policy:
+  policy_name: no-import-rt3-rt5
+    
+prefix_ip:
+  - prefix_set_ip: 20.1.1.0/24
+    mask_length_range: 24..32
+ 
+prefix_name:
+  prefix_set_name: l3evpn_overlay
+  
+statments:
+  - seq_id: 10
+    prefix_set_name: l3evpn_overlay
+  - seq_id: 20
+    route_type: 3
+    
+bgp_neighbors:
+  - neighbor_ip: 100.1.0.2
+

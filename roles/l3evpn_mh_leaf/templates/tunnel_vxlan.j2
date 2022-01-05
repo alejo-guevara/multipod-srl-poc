@@ -1,0 +1,37 @@
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "set",
+    "params": {
+        "commands": [
+            {% for interface in tunnel_interfaces %}
+             {% for vxlan_if in interface.vxlan_interface %}
+            {
+
+                "action": "update",
+                "path": "/tunnel-interface[name={{interface.name}}]",
+                "value": {
+                  
+                     "name": "{{interface.name}}",
+
+                     "vxlan-interface": [
+                        {
+                        "index":"{{vxlan_if.index}}",
+                        "type": "{{vxlan_if.type}}",
+                        "ingress": {
+                            "vni":  {{vxlan_if.vni}}
+                        },
+                        "egress": {
+                            "source-ip": "use-system-ipv4-address"
+                        }
+                        }
+                    
+                    ]
+                }
+            }{% if not loop.last %} ,
+            {% endif %}
+              {% endfor %}      
+              {% endfor %}      
+        ]
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "set",
+    "params": {
+        "commands": [
+            {
+                "action": "update",
+                "path": "/system",
+                "value": {
+                    "network-instance": {
+                        "protocols": {
+                            "evpn": {
+                                "ethernet-segments": {
+                                    "bgp-instance": [
+                                        {
+                                            "id": 1,
+                                            "ethernet-segment": [
+                                                {
+                                                    "name": "{{ethernet_segments.name}}",
+                                                     "admin-state": "enable",
+                                                    "esi": "{{ethernet_segments.esi}}",
+                                                    "interface": "{{ethernet_segments.interface}}"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "bgp-vpn": {
+                                "bgp-instance": [
+                                    {
+                                        "id": 1
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

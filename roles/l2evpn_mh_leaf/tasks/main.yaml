@@ -1,0 +1,82 @@
+---
+- include_vars:
+    file: "{{role_path}}/vars/{{inventory_hostname}}.yml"
+  
+
+- name: Configure L2EVPN Overlay VLAN Interface Configs for {{inventory_hostname}}
+
+  uri:
+        url: http://{{ansible_host}}:80/jsonrpc
+        user: admin
+        password: admin
+        method: POST
+        body: "{{ lookup('template', 'vlan_interface.j2') }}"
+        force_basic_auth: yes
+        body_format: json
+
+
+- name: Configure L2EVPN Routing Policy Configs for {{inventory_hostname}}
+ 
+
+  uri:
+        url: http://{{ansible_host}}:80/jsonrpc
+        user: admin
+        password: admin
+        method: POST
+        body: "{{ lookup('template', 'routing_policy.j2') }}"
+        force_basic_auth: yes
+        body_format: json
+- name: Configure L2EVPN Overlay IBGP Configs for {{inventory_hostname}}
+  
+  uri:
+        url: http://{{ansible_host}}:80/jsonrpc
+        user: admin
+        password: admin
+        method: POST
+        body: "{{ lookup('template', 'ibgp_leaf.j2') }}"
+        force_basic_auth: yes
+        body_format: json
+
+- name: Configure L2EVPN Overlay VXLAN Tunnel Configs for {{inventory_hostname}}
+  
+  uri:
+        url: http://{{ansible_host}}:80/jsonrpc
+        user: admin
+        password: admin
+        method: POST
+        body: "{{ lookup('template', 'tunnel_vxlan.j2') }}"
+        force_basic_auth: yes
+        body_format: json
+
+- name: Configure L2EVPN Overlay VRF Configs for {{inventory_hostname}}
+
+  uri:
+        url: http://{{ansible_host}}:80/jsonrpc
+        user: admin
+        password: admin
+        method: POST
+        body: "{{ lookup('template', 'mac_vrf.j2') }}"
+        force_basic_auth: yes
+        body_format: json
+
+- name: Configure L2EVPN Overlay LAG Configs for {{inventory_hostname}}
+
+  uri:
+        url: http://{{ansible_host}}:80/jsonrpc
+        user: admin
+        password: admin
+        method: POST
+        body: "{{ lookup('template', 'interface_lag.j2') }}"
+        force_basic_auth: yes
+        body_format: json
+
+- name: Configure L2EVPN Overlay ESI segment Configs for {{inventory_hostname}}
+
+  uri:
+        url: http://{{ansible_host}}:80/jsonrpc
+        user: admin
+        password: admin
+        method: POST
+        body: "{{ lookup('template', 'ethernet_segment.j2') }}"
+        force_basic_auth: yes
+        body_format: json

@@ -1,0 +1,62 @@
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "set",
+    "params": {
+        "commands": [
+            {% for ipvrf in l3evpn_ipvrf.network_instance %}
+              {% for interface in ipvrf.irb_interfaces %}
+            
+
+            {
+                "action": "update",
+                "path": "/interface[name={{interface.name}}]",
+                "value": {
+                    "name": "{{interface.name}}",
+                    "admin-state": "enable",
+                    "subinterface": [
+                        {
+                            "index": {{interface.index}},
+                            "admin-state": "enable",
+                            "ipv4": {
+                                "address": [
+                                  
+                                    {
+                                        "ip-prefix": "{{interface.ipv4_anycast_address_prefix}}",
+                                        "anycast-gw": true
+                                    }
+                                ],
+                                "arp": {
+                                "learn-unsolicited": true,
+                                "debug": [
+                                    "messages"
+                                ],
+                                "host-route": {
+                                    "populate": [
+                                        {
+                                            "route-type": "dynamic"
+                                        }
+                                    ]
+                                },
+                                "evpn": {
+                                    "advertise": [
+                                        {
+                                            "route-type": "dynamic"
+                                        }
+                                    ]
+                                }
+                            }
+                            },
+                          
+                            
+                            "anycast-gw": {}
+                        }
+                    ]
+                }
+            }{% if not loop.last %},
+            {% endif %}
+              {% endfor %}  
+                {% endfor %}
+        ]
+    }
+}

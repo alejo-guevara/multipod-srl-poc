@@ -1,0 +1,69 @@
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "set",
+    "params": {
+        "commands": [
+            {% for agg in interfaces_aggregate %}
+            {
+                "action": "update",
+                
+                "path": "/interface[name={{agg.name}}]",
+                "value": {
+                     
+                    "name": "{{agg.name}}",
+                    "admin-state": "enable",
+                     "ethernet": {
+                        "aggregate-id": "{{agg.aggregate_id}}"
+                      }
+                  
+                }
+                  
+                              
+            } , 
+              {% endfor %}      
+
+             {% for lag in interfaces_lag %}
+            {
+                "action": "update",
+                
+                "path": "/interface[name={{lag.name}}]",
+                "value": {
+                      
+                   
+                        "name": "{{lag.name}}",
+                          "admin-state": "enable",
+                        "subinterface": [
+                            {
+                              
+                            "index": {{ lag.index }},
+                              "admin-state": "enable",
+                            "type": "bridged"
+                            }
+                        ],
+                        "lag": {
+                            "lag-type": "{{lag.lag_type}}",
+                            "member-speed": "{{lag.member_speed}}",  
+                              "lacp": {
+                            "admin-key": "{{lag.admin_key}}",
+                            "system-id-mac":"{{lag.system_id_mac}}",
+                            "lacp-mode": "ACTIVE"
+                              
+                                }
+                 
+                           
+                            
+                            }
+                        } 
+                  
+                              
+                  
+                }
+                      {% if not loop.last %} ,
+                    {% endif %}
+                    {% endfor %}     
+            
+               
+        ]
+    }
+}

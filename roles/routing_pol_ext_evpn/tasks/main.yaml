@@ -1,0 +1,23 @@
+---
+- include_vars:
+    file: "{{role_path}}/vars/{{inventory_hostname}}.yml"
+
+- name: Configure Routing Policies for {{inventory_hostname}}
+  uri:
+        url: http://{{ansible_host}}:80/jsonrpc
+        user: admin
+        password: admin
+        method: POST
+        body: "{{ lookup('template', 'routing_policies.j2') }}"
+        force_basic_auth: yes
+        body_format: json
+
+- name: Apply the routing policies for {{inventory_hostname}}
+  uri:
+        url: http://{{ansible_host}}:80/jsonrpc
+        user: admin
+        password: admin
+        method: POST
+        body: "{{ lookup('template', 'bgp.j2') }}"
+        force_basic_auth: yes
+        body_format: json

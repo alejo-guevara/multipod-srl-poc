@@ -1,0 +1,42 @@
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "set",
+    "params": {
+        "commands": [
+            {% for mac_vrf in l2evpn.network_instance %}
+              {% for interface in mac_vrf.vlan_interfaces %}
+            
+
+            {
+                "action": "update",
+                "path": "/interface[name={{interface.name}}]",
+                "value": {
+                    "name": "{{interface.name}}",
+                    "description": "to_host",
+                    "admin-state": "enable",
+                    "vlan-tagging": true,
+                    "subinterface": [
+                        {
+                        "index": {{interface.index}},
+                        "type": "bridged",
+                        "admin-state": "enable",
+                        "vlan": {
+                            "encap": {
+                            "single-tagged": {
+                                "vlan-id": "any"
+                            }
+                            }
+                         }
+                        }
+                    ]
+
+                }
+            }{% if not loop.last %} ,      {% endif %}
+              {% endfor %}  
+              {% if not loop.last %} ,     {% endif %}
+                {% endfor %}      
+        ]    
+        
+    }
+}

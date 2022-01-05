@@ -1,0 +1,24 @@
+---
+- include_vars:
+    file: "{{role_path}}/vars/{{inventory_hostname}}.yml"
+
+- name: Configure L2EVPN Routing Policy Configs for {{inventory_hostname}}
+ 
+  uri:
+        url: http://{{ansible_host}}:80/jsonrpc
+        user: admin
+        password: admin
+        method: POST
+        body: "{{ lookup('template', 'routing_policy.j2') }}"
+        force_basic_auth: yes
+        body_format: json
+- name: Configure L2EVPN Overlay IBGP Configs for {{inventory_hostname}}
+  
+  uri:
+        url: http://{{ansible_host}}:80/jsonrpc
+        user: admin
+        password: admin
+        method: POST
+        body: "{{ lookup('template', 'ibgp_rr.j2') }}"
+        force_basic_auth: yes
+        body_format: json

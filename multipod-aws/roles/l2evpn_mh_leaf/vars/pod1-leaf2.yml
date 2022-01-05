@@ -1,0 +1,68 @@
+interfaces_aggregate:
+  - name: ethernet-1/12
+    aggregate_id: "lag12"
+
+
+interfaces_lag:
+  - name: lag12
+    index: 10
+    lag_type : "lacp"
+    member_speed : "10G"
+    lacp_mode: "ACTIVE"
+    admin_key: 12
+    system_id_mac: "00:00:00:00:00:12"
+
+
+routing_policy:
+    - policy_name: export-all
+      default-action : accept
+    - policy_name: import-all
+      default-action : accept
+
+bgp:
+  network_instance: default
+  local_as: 65500
+  local_address: 101.1.2.2
+  peer_group : iBGP-evpn
+
+
+bgp_neighbors:
+  - neighbor_ip : 100.1.0.1
+    peer_group : iBGP-evpn
+    remote_as: 65500
+
+
+tunnel_interfaces:
+  - name: "vxlan1"
+    vxlan_interface:
+        - index: 10
+          type: bridged
+          vni: 10
+
+ethernet_segments:
+        name: "es1"
+        esi: "00:12:12:12:12:12:12:00:00:12"
+        interface: "lag12"
+        bgp_vpn: 1
+
+
+l2evpn:
+  network_instance:
+    - name: mac_vrf_10
+      type: mac-vrf
+      bgp_evpn:
+        - bgp_instance: 1
+          vxlan_interface: vxlan1.10
+          evi: 10
+          ecmp: 2
+      bgp_vpn:
+        - bgp_instance: 1
+          export_rt: '65000:10'
+          import_rt: '65000:10'
+
+
+      vlan_interfaces:
+          - name :  lag12
+            index : 10
+            vlan_id : any
+

@@ -1,0 +1,86 @@
+interfaces_aggregate:
+  - name: ethernet-1/12
+    aggregate_id: "lag12"
+
+interfaces_lag:
+  - name: lag12 
+    index: 20
+    lag_type : "lacp"
+    member_speed : "10G"
+    lacp_mode: "ACTIVE"
+    admin_key: 12
+    system_id_mac: "00:00:00:00:12:12"
+
+ethernet_segments:
+        name: "es3"
+        esi: "00:12:12:12:12:12:12:12:00:13"
+        interface: "lag12"
+        bgp_vpn: 1
+
+routing_policy:
+    - policy_name: export-all
+      default-action : accept
+    - policy_name: import-all
+      default-action : accept
+
+bgp:
+  network_instance: default
+  local_as: 65500 
+  local_address: 101.1.2.4
+  peer_group : iBGP-evpn
+  
+
+bgp_neighbors:
+  - neighbor_ip : 100.1.0.1
+    peer_group : iBGP-evpn
+    remote_as: 65500
+
+tunnel_interfaces:
+  - name: "vxlan1"
+    vxlan_interface:
+        - index: 20
+          type: bridged
+          vni: 20
+        - index: 30
+          type: routed
+          vni: 30
+
+l2evpn:
+  network_instance:
+    - name: mac_vrf_20
+      type: mac-vrf
+      bgp_evpn:
+        - bgp_instance: 1
+          vxlan_interface: vxlan1.20
+          evi: 20
+          ecmp: 2
+      bgp_vpn:
+        - bgp_instance: 1
+          export_rt: '65500:20'
+          import_rt: '65500:20'
+      vlan_interfaces:
+          - name :  lag12
+            index : 20
+            vlan_id : any
+      irb_interfaces:
+          - name : irb0
+            index : 20
+
+l3evpn_ipvrf:
+  network_instance:
+    - name: "ip_vrf_30"
+      type: ip-vrf
+
+      bgp_evpn:
+        - bgp_instance: 1
+          vxlan_interface: vxlan1.30
+          evi: 30
+          ecmp: 2
+      bgp_vpn:
+        - bgp_instance: 1
+          export_rt: '65500:30'
+          import_rt: '65500:30'
+      irb_interfaces:
+          - name :  irb0
+            index : 20
+            ipv4_anycast_address_prefix: 20.1.1.1/24

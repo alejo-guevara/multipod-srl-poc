@@ -1,0 +1,40 @@
+routing_policy:
+    - policy_name: export-all   
+      default-action : accept
+    - policy_name: import-all   
+      default-action : accept 
+
+bgp:
+  network_instance: default
+  local_as: 65500 
+  local_address: 101.1.2.1
+  peer_group : iBGP-evpn
+
+bgp_neighbors:
+  - neighbor_ip : 100.1.0.1
+    peer_group : iBGP-evpn
+    remote_as: 65500
+
+tunnel_interfaces:
+  - name: "vxlan1"
+    vxlan_interface:
+        - index: 10      
+          type: bridged
+          vni: 10
+l2evpn:
+  network_instance:
+    - name: mac_vrf_10
+      type: mac-vrf
+      bgp_evpn: 
+        - bgp_instance: 1
+          vxlan_interface: vxlan1.10
+          evi: 10
+          ecmp: 2
+      bgp_vpn:
+        - bgp_instance: 1
+          export_rt: '65500:10'
+          import_rt: '65500:10'
+      vlan_interfaces:
+          - name :  ethernet-1/11
+            index : 10           
+            vlan_id : any

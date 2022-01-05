@@ -1,0 +1,6 @@
+---
+- name: Configure Leafs
+  hosts: pod1-leaf1,pod1-leaf2
+  gather_facts: no
+  roles:
+  - routing_pol_ext_evpn

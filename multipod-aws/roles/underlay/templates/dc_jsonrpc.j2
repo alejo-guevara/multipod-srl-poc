@@ -1,0 +1,133 @@
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "set",
+    "params": {
+        "commands": [
+
+            {
+                "action": "update",
+                "path": "/",
+                "value": {
+
+                    "srl_nokia-interfaces:interface": [
+
+                        {% for interface in interfaces %}
+                            {
+                            "name": "{{interface.name}}",
+                            "admin-state": "enable",
+                            "subinterface": [
+                                {
+                                "index": {{interface.index}},
+                                "admin-state": "enable",
+                                "ipv4": {
+                                    "address": [
+                                    {
+                                        "ip-prefix": "{{interface.ipv4_address_prefix}}"
+                                    }
+                                    ]
+                                }
+                                }
+                            ]
+                            } {% if not loop.last %},{% endif %}
+                        {% endfor %}
+                    ],
+                    "srl_nokia-network-instance:network-instance": [
+                        {
+                        "name": "default",
+                        "type": "srl_nokia-network-instance:default",
+                        "admin-state": "enable",
+                        "interface": [
+                            {% for interface in interfaces %}
+                                        {
+                                            "name": "{{interface.name}}.{{interface.index}}"
+                                            }{% if not loop.last %},{% endif %}
+                            {% endfor %}
+                        ],
+                        "protocols": {
+                            "srl_nokia-bgp:bgp": {
+                            "autonomous-system": {{ bgp.local_as}},
+                            "router-id": "{{ bgp.router_id }}",
+                            "ebgp-default-policy": {
+                                "import-reject-all": false,
+                                "export-reject-all": true
+                            },
+                            "group": [
+                                {% for bgp_peer_group in bgp_peer_groups %}
+                                {
+                                "group-name": "{{ bgp_peer_group.peer_group }}",
+                                "admin-state": "enable"
+                                }{% if not loop.last %},{% endif %}
+                                {% endfor %}
+                            ],
+                            "ipv4-unicast": {
+                                "multipath": {
+                                "max-paths-level-1": 64,
+                                "max-paths-level-2": 64
+                                }
+                            },
+                            "neighbor": [
+                                {% for bgp_neighbor in bgp_neighbors %}
+                                {
+                                    "peer-address": "{{ bgp_neighbor.neighbor_ip }}",
+                                    "admin-state": "enable",
+                                    "export-policy": "{{ routing_policy.policy_name }}",
+                                    "peer-as": "{{bgp_neighbor.remote_as}}",
+                                    "peer-group": "{{ bgp_neighbor.peer_group }}",
+                                    "failure-detection": {
+                                        "enable-bfd": true,
+                                        "fast-failover": true
+                                    }
+                                    }{% if not loop.last %},{% endif %}
+                                {% endfor %}
+                            ]
+                            }
+                        }
+                        }
+                    ],
+                    "srl_nokia-routing-policy:routing-policy": {
+                        "prefix-set": [
+                        {
+                            "name": "{{ routing_policy.prefix_set_name }}",
+                            "prefix": [
+                            {% for prefix in prefix_ip %}
+                            {
+                                "ip-prefix": "{{ prefix.prefix_set_ip }}",
+                                "mask-length-range": "8..32"
+                            }{% if not loop.last %},{% endif %}
+                                {% endfor %}
+                            ]
+                        }
+                        ],
+                        "policy": [
+
+                        {
+                            "name": "{{ routing_policy.policy_name }}",
+                            "default-action": {
+                            "reject": {}
+                            },
+                            "statement": [
+                            {
+                                "sequence-id": 10,
+                                "match": {
+                                "prefix-set": "{{ routing_policy.prefix_set_name }}"
+                                },
+                                "action": {
+                                "accept": {}
+                                }
+                            }
+                            ]
+                        }
+                        ]
+                    }
+
+
+
+
+
+                }
+            }
+            ]
+        }
+    }
+
