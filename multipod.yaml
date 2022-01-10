@@ -138,6 +138,22 @@ topology:
       ports:
         - 8086:8086
 
+    gnmic:
+      kind: linux
+      image: ghcr.io/karimra/gnmic:0.18.0
+      binds:
+        - configs/gnmic/gnmic-config.yml:/gnmic-config.yml:ro
+      cmd: --config /gnmic-config.yml --log subscribe
+
+    prometheus:
+      kind: linux
+      image: prom/prometheus:v2.23.0
+      binds:
+        - configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      cmd: --config.file=/etc/prometheus/prometheus.yml
+      ports:
+        - 9090:9090    
+
   links:
     - endpoints: ["rr:e1-1", "pod1-dcgw1:e1-3"]
     - endpoints: ["rr:e1-2", "pod2-dcgw1:e1-3"]
