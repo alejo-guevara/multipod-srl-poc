@@ -478,7 +478,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.1.8",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -489,11 +489,11 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "gnmic_srl_cpu_instant",
+          "expr": "gnmic_srl_cpu_instant{}",
+          "hide": false,
           "interval": "",
-          "legendFormat": "{{source}}",
-          "queryType": "randomWalk",
-          "refId": "A"
+          "legendFormat": "",
+          "refId": "B"
         }
       ],
       "thresholds": [
@@ -620,7 +620,7 @@
           }
         ]
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.1.8",
       "targets": [
         {
           "groupBy": [],
@@ -725,7 +725,7 @@
           }
         ]
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.1.8",
       "targets": [
         {
           "groupBy": [],
@@ -829,7 +829,7 @@
           }
         ]
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.1.8",
       "targets": [
         {
           "groupBy": [],
