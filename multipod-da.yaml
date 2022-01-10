@@ -1,4 +1,4 @@
-name: multipod
+name: multipod-da
 prefix: ""
 mgmt:
   network: oob_mgmt                # management network name
