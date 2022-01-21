@@ -11,6 +11,9 @@ topology:
       image: ghcr.io/nokia/srlinux:latest
     linux:
       image: ghcr.io/hellt/network-multitool
+    bind:
+    - plugins:/etc/opt/srlinux/cli/plugins:ro
+    
   nodes:
     rr:
       kind: srl
