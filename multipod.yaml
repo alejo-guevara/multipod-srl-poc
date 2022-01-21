@@ -9,18 +9,16 @@ topology:
     srl:
       type: ixrd2
       image: ghcr.io/nokia/srlinux:latest
+      binds:
+        - plugins:/etc/opt/srlinux/cli/plugins
     linux:
       image: ghcr.io/hellt/network-multitool
-    #binds:
-    # - plugins:/etc/opt/srlinux/cli/plugins
     
   nodes:
     rr:
       kind: srl
       type: ixr6
       mgmt_ipv4: 171.0.0.255
-      binds:
-        - plugins:/etc/opt/srlinux/cli/plugins
     pod1-dcgw1:
       kind: srl
       type: ixr6
