@@ -21,7 +21,7 @@ def show_sysinfo(state, output, arguments, **_kwargs):
     output.print(str(subprocess.call('neofetch')))
 
 def show_hello(state, output, arguments, **_kwargs):
-    output.print('############################\n')
-    output.print('Welcome to the CUSTOMER PoC!\n')
-    output.print('############################\n')
+    output.print('################################\n')
+    output.print('# Welcome to the CUSTOMER PoC! #\n')
+    output.print('################################\n')
 
