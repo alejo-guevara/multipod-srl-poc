@@ -24,6 +24,7 @@ targets:
   pod2-leaf2:
   pod2-leaf3:
   pod1-leaf4:
+  rr:
 
 subscriptions:
   srl_if_stats:
