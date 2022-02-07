@@ -157,6 +157,14 @@ topology:
       ports:
         - 9090:9090    
 
+###### TACACS+ and SYSLOG ######
+
+    tacacs+:
+      kind: linux
+      image: dchidell/docker-tacacs
+      ports:
+        - 49:49
+
   links:
     - endpoints: ["rr:e1-1", "pod1-dcgw1:e1-3"]
     - endpoints: ["rr:e1-2", "pod2-dcgw1:e1-3"]
