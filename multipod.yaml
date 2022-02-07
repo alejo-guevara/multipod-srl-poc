@@ -162,6 +162,9 @@ topology:
     tacacs:
       kind: linux
       image: dchidell/docker-tacacs
+      mgmt_ipv4: 171.0.0.55 # Pick a fixed IP
+      binds:
+        - configs/tacacs/tac_user.cfg:/etc/tac_plus/tac_user.cfg:ro
       ports:
         - 49:49
 
