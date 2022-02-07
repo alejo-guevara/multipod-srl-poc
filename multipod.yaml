@@ -159,7 +159,7 @@ topology:
 
 ###### TACACS+ and SYSLOG ######
 
-    tacacs+:
+    tacacs:
       kind: linux
       image: dchidell/docker-tacacs
       ports:
