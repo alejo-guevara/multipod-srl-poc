@@ -19,6 +19,8 @@ topology:
       kind: srl
       type: ixr6
       mgmt_ipv4: 171.0.0.255
+      ports:
+        - 22:2200
     pod1-dcgw1:
       kind: srl
       type: ixr6
