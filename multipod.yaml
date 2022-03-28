@@ -20,35 +20,51 @@ topology:
       type: ixr6
       mgmt_ipv4: 171.0.0.255
       ports:
-        - 2200:22
+        - 22000:22
     pod1-dcgw1:
       kind: srl
       type: ixr6
       mgmt_ipv4: 171.1.1.1
+      ports:
+        - 22101:22
     pod2-dcgw1:
       kind: srl
       type: ixr6
       mgmt_ipv4: 171.2.1.1
+      ports:
+        - 22201:22
     pod1-spine1:
       kind: srl
       type: ixrd3
       mgmt_ipv4: 171.1.1.0
+      ports:
+        - 22111:22
     pod1-spine2:
       kind: srl
       type: ixrd3
       mgmt_ipv4: 171.1.2.0
+      ports:
+        - 22112:22      
     pod1-leaf1:
       kind: srl
       mgmt_ipv4: 171.1.0.1
+      ports:
+        - 22121:22
     pod1-leaf2:
       kind: srl
       mgmt_ipv4: 171.1.0.2
+      ports:
+        - 22122:22
     pod1-leaf3:
       kind: srl
       mgmt_ipv4: 171.1.0.3
+      ports:
+        - 22123:22
     pod1-leaf4:
       kind: srl
       mgmt_ipv4: 171.1.0.4
+      ports:
+        - 22124:22
     client11:
       kind: linux
       mgmt_ipv4: 171.0.0.31
@@ -72,22 +88,34 @@ topology:
       kind: srl
       type: ixrd3
       mgmt_ipv4: 171.2.1.0
+      ports:
+        - 22211:22
     pod2-spine2:
       kind: srl
       type: ixrd3
       mgmt_ipv4: 171.2.2.0
+      ports:
+        - 22212:22
     pod2-leaf1:
       kind: srl
       mgmt_ipv4: 171.2.0.1
+      ports:
+        - 22221:22
     pod2-leaf2:
       kind: srl
       mgmt_ipv4: 171.2.0.2
+      ports:
+        - 22222:22
     pod2-leaf3:
       kind: srl
       mgmt_ipv4: 171.2.0.3
+      ports:
+        - 22223:22
     pod2-leaf4:
       kind: srl
       mgmt_ipv4: 171.2.0.4
+      ports:
+        - 22224:22
     client21:
       kind: linux
       mgmt_ipv4: 171.0.0.41
