@@ -1,4 +1,4 @@
-name: multipod
+name: multipod-lite
 prefix: ""
 mgmt:
   network: oob_mgmt                # management network name
@@ -27,12 +27,6 @@ topology:
       mgmt_ipv4: 171.1.1.1
       ports:
         - 22101:22
-    pod2-dcgw1:
-      kind: srl
-      type: ixr6
-      mgmt_ipv4: 171.2.1.1
-      ports:
-        - 22201:22
     pod1-spine1:
       kind: srl
       type: ixrd3
@@ -84,56 +78,6 @@ topology:
       kind: linux
       mgmt_ipv4: 171.0.0.36
 
-    pod2-spine1:
-      kind: srl
-      type: ixrd3
-      mgmt_ipv4: 171.2.1.0
-      ports:
-        - 22211:22
-    pod2-spine2:
-      kind: srl
-      type: ixrd3
-      mgmt_ipv4: 171.2.2.0
-      ports:
-        - 22212:22
-    pod2-leaf1:
-      kind: srl
-      mgmt_ipv4: 171.2.0.1
-      ports:
-        - 22221:22
-    pod2-leaf2:
-      kind: srl
-      mgmt_ipv4: 171.2.0.2
-      ports:
-        - 22222:22
-    pod2-leaf3:
-      kind: srl
-      mgmt_ipv4: 171.2.0.3
-      ports:
-        - 22223:22
-    pod2-leaf4:
-      kind: srl
-      mgmt_ipv4: 171.2.0.4
-      ports:
-        - 22224:22
-    client21:
-      kind: linux
-      mgmt_ipv4: 171.0.0.41
-    client212:
-      kind: linux
-      mgmt_ipv4: 171.0.0.42
-    client22:
-      kind: linux
-      mgmt_ipv4: 171.0.0.43
-    client23:
-      kind: linux
-      mgmt_ipv4: 171.0.0.44
-    client234:
-      kind: linux
-      mgmt_ipv4: 171.0.0.45
-    client24:
-      kind: linux
-      mgmt_ipv4: 171.0.0.46
 
   ###### TELEMETRY STACK ######
 
