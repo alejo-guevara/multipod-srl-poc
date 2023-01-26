@@ -1,0 +1,42 @@
+[all:vars]
+ansible_connection =local
+
+[spines]
+pod1-spine1 ansible_host=171.1.1.0
+pod1-spine2 ansible_host=171.1.2.0
+
+
+[leafs]
+pod1-leaf1 ansible_host=171.1.0.1
+pod1-leaf2 ansible_host=171.1.0.2
+pod1-leaf3 ansible_host=171.1.0.3
+pod1-leaf4 ansible_host=171.1.0.4
+
+
+[dcgws]
+pod1-dcgw1 ansible_host=171.1.1.1
+
+
+[rrs]
+rr ansible_host=171.0.0.255
+
+[leafs-l2evpn]
+pod1-leaf1 ansible_host=171.1.0.1
+pod1-leaf3 ansible_host=171.1.0.3
+
+
+
+[leafs-l2evpn-mh]
+pod1-leaf1 ansible_host=171.1.0.1
+pod1-leaf2 ansible_host=171.1.0.2
+
+
+[leafs-l3evpn]
+pod1-leaf2 ansible_host=171.1.0.2
+pod1-leaf4 ansible_host=171.1.0.4
+
+
+[leafs-l3evpn-mh]
+pod1-leaf3 ansible_host=171.1.0.3
+pod1-leaf4 ansible_host=171.1.0.4
+
