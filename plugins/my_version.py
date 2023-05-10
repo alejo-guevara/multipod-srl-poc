@@ -86,7 +86,7 @@ class Plugin(CliPlugin):
     def _populate_data(self, state, arguments):
         result = Data(arguments.schema)
         data = result.basic_system_info.create()
-        data.current_time = str(datetime.now())
+        data.que_hora_es_= str(datetime.now())
 
         data.hostname = '<Unknown>'
         if self._hostname_data:
