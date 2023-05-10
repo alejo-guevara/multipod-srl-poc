@@ -4,10 +4,10 @@
       "generated-by": "SRLINUX",
       "name": "",
       "comment": "",
-      "created": "2023-01-26T20:37:22.227Z",
+      "created": "2023-02-17T16:34:45.099Z",
       "release": "v22.11.1",
       "enabled-yang-features": ["srl_nokia-features:bgp-ipv6-next-hop-tunnel-resolution", "srl_nokia-features:bgp-single-hop-connected-check", "srl_nokia-features:bgp-unnumbered-peers", "srl_nokia-features:cam-cammgr-thread-programming", "srl_nokia-features:cam-multithread-programming", "srl_nokia-features:chassis", "srl_nokia-features:configurable-intf-mac-addr", "srl_nokia-features:dynamic-tcam", "srl_nokia-features:event-handler", "srl_nokia-features:future-22-11", "srl_nokia-features:ip-acl-dscp-set", "srl_nokia-features:isis-nsf", "srl_nokia-features:jericho2", "srl_nokia-features:l3-proxy-arp", "srl_nokia-features:l3-proxy-nd", "srl_nokia-features:label-management", "srl_nokia-features:lacp-fallback", "srl_nokia-features:lag", "srl_nokia-features:ldp", "srl_nokia-features:license", "srl_nokia-features:mpls", "srl_nokia-features:named-queues-and-named-fcs", "srl_nokia-features:oc-extracted-cpm-traffic-stats", "srl_nokia-features:openconfig", "srl_nokia-features:p4rt", "srl_nokia-features:platform-7250-ixr", "srl_nokia-features:policy-based-forwarding-dscp-ip-protocol", "srl_nokia-features:segment-routing", "srl_nokia-features:segment-routing-adjacency-sid", "srl_nokia-features:segment-routing-shared-sid", "srl_nokia-features:spine", "srl_nokia-features:subif-stats-per-ipv4-ipv6-container", "srl_nokia-features:virtual-ip-discovery"],
-      "checksum": "dc1b2028e6e1fac2$c22fe8909b236110bafa15f359185fdd6d0355f8"
+      "checksum": "640aeebee5cc74fb$850aa59488d7a0df0ea63e9d8eb2b47545461004"
     },
     "build": {
       "git-branch": "SRL_22_11_B1",
@@ -2220,18 +2220,99 @@
       ]
     }
   },
+  "srl_nokia-bfd:bfd": {
+    "subinterface": [
+      {
+        "id": "ethernet-1/1.0",
+        "admin-state": "enable",
+        "desired-minimum-transmit-interval": 250000,
+        "required-minimum-receive": 250000,
+        "detection-multiplier": 3
+      },
+      {
+        "id": "ethernet-1/2.0",
+        "admin-state": "enable",
+        "desired-minimum-transmit-interval": 250000,
+        "required-minimum-receive": 250000,
+        "detection-multiplier": 3
+      },
+      {
+        "id": "ethernet-1/3.0",
+        "admin-state": "enable",
+        "desired-minimum-transmit-interval": 250000,
+        "required-minimum-receive": 250000,
+        "detection-multiplier": 3
+      }
+    ]
+  },
   "srl_nokia-interfaces:interface": [
     {
       "name": "ethernet-1/1",
-      "admin-state": "enable"
+      "admin-state": "enable",
+      "subinterface": [
+        {
+          "index": 0,
+          "admin-state": "enable",
+          "ipv4": {
+            "address": [
+              {
+                "ip-prefix": "21.1.1.0/31"
+              }
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "ethernet-1/2",
-      "admin-state": "enable"
+      "admin-state": "enable",
+      "subinterface": [
+        {
+          "index": 0,
+          "admin-state": "enable",
+          "ipv4": {
+            "address": [
+              {
+                "ip-prefix": "21.2.1.0/31"
+              }
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "ethernet-1/3",
-      "admin-state": "enable"
+      "admin-state": "enable",
+      "subinterface": [
+        {
+          "index": 0,
+          "admin-state": "enable",
+          "ipv4": {
+            "address": [
+              {
+                "ip-prefix": "192.168.11.1/31"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "lo0",
+      "admin-state": "enable",
+      "subinterface": [
+        {
+          "index": 0,
+          "admin-state": "enable",
+          "ipv4": {
+            "address": [
+              {
+                "ip-prefix": "100.1.0.1/32"
+              }
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "mgmt0",
@@ -2289,8 +2370,8 @@
       "server-profile": [
         {
           "name": "clab-profile",
-          "key": "$aes$fh84FO3xNyoI=$l3ZExztLsJmzf56EoGdQjySGTeQbO+DpwSq195yGE7IPJ81XInsSRWHtP8ZqzbhAl6zMh15I9cmyfbYiZldkynoHZ5M6gprex41lchzRzcekXZHT3b0f9iLeVhtCZqdvDecRdhgcL2hwZ+RV+Fzm8tyJiiqZxwtHDBzPZgCPmWi9muWEnMIged1TcxU8ZOnXkrp+Mh/6tg+dRBII9+KtiD80jvAo6KfUg6u9/ecULr5EYQjTDvPNluz01ldZtla9w3fnK9FP9KtoJON/y4xEhhs/FWr5lEW95ATCcwK+/UN5L9Ppj+zkbPHCv/X/6B6Jeok2lb8AUoWIumSBO9uiMygQ97wTFI5dN19C3iIrnVa5ZgyDnMxy4YbtacQTdiRaB6fSpwyTrTAimKxdQhj9uW9r7ITOAq2QPDX/SWuoD7t66mZU3O90LzVxgOivQEy2R8O4LQMwCCX8gSnibh70WOVzyAsIRJ3IxBEGgGEnN7A6U3Dla61Y4MR/oMYmwJmxb1pjQrlKNYj6IgELzKlwk9XSOj/ZqipMq3UjxorO9+pPKky8dFV3jDXDnEFS7SeeNqrgUtMQMB9tmMhrXPP2h01c9YrujR0s9wwaw1SGEStYTory2hPyoVjB5GiMfEVZPAeyBIupR0upwIlIz/5RUnlrCsQzr3KRWzlL3XMyzzMFGFrCSCMrQKkTZVn8BPi8veG1vVKaxAPAiq5t0r6HVO4o2qsiguy1D1t2TrXmxp3BPUdpMLzZzkjcyiN61CET17nIG3OMA+YAeyVz6qMDAbWzpiMCwY+5riw6qUNj0qYnwT3zR6NqknlQOWfSfERIVrunp2YiU/X2Mpv/gXSo/MmrHT6xRofXlrOwEKErARorvfXfhm3dn5l4HaTeMG4eN/iy6NlTGCMeJEKCh6ku61/TD947+Kbjzd6mpVWafkXP4vk721AAcKQnvU9xeDP2Pval1UjlPKQ7DHHp0EeTjuoX9AoU3hcNbrYaghv08wPsgoK4Lt6idzAmsmboBYBbR6Te39dlIi1U75ncKzC6lczHGtekewLQaDvHgLTpUm9EwzUSAZMkHjpqWyqQz+NnOOc88wTnmT5wYdOiB+5xnHjje+9UjzKkL8wjCKcEVUPYKt1Y9uE+qiwwOhYIPwhWEF2iwWcFQH83QPoZRN0xCCYZJeS5biRds1T/NWTMOZFFN0Gjl/P7TWkmc6NMnyvpD9SWLkR+1KaIP4gUZgLHImNYihLKxfJ+mK9wjZ4oQoDahpYQF1Y8b70iVYDLUBUROQ2MQSe6iDODCPuv5iL8OqIwU0dL+g4ONWd3R43/zK/qLqBG7KgFUjGZ34owYBKwSxuFfJQ9LGmtZrC27uSVn6dQIIWM5mq0/WfrqhX3tShCRLYDJ4fInwCNvyPtSSFW45pwiwXUz2TxIL/KdDqCR4YDnNz3NW9qbCedxSGfhpIUJtljYwqxukLAVkEdIqRZm2oZubCnyTAgFVUEfPglXuOS0ZJkTEahzNimbUeUiC1pgXmR1djCj3Axody7f+EK/uVNNoAsI0ZUlCAeSOMhHY1rdhUAQiomMyTJl3Ot3xd/Z61LLSFuuximt7gYJXnKvzwyD0IA9nqKlo3Xz78JoP7YXM9aajGBjlsBc4wzJ+fHarV5NfUOllNJhw+zZ0Sk6K1NohyGf2fEdkSrWNzkqtDSzKq9zIvh0XdeKH4Dr50wiwMmOlVXuaI9oPi72K2ruNsI6NN4Jm1N4wAsRpzDIxNgwY+tZtO7N2x1XsxaFb7tZNFyQ3VFHPDbak60ev6c8c9JlMeycfKOxHY15YIiYPELhGWWadPpoTpd+YXwR2bJ+UvgcIaNFCTKxuVwuFOtydScAG8UFjZdqB+B1HhtVbh0h0IYjnrc5IxCgk+lLIdT7rI8mpkHuBSlY/3pE3r0T6phkHMe0uUxmoWd4aRFugysojyVGfoMWK0wO42l5kfenrVEE3GEP44ybe44HXDaUSVBrCp1HSZljqgBq+oYnseWVn30up8jh9L9T0FUS/KlGGu8Arki/56GDfh8womhuJc/2TJqPQ/0xS245599RkGnvoR+C33gmssAByOhQMmMnvJuChffdkahQWpOXbT5RzpIGNsXEkEk7gk8+abDCK5Eeu8mJm/eV//qSn1cS0ZIUIs6mq/107q/H0nhIUqK0rBNCZ1NQtccgZnzAnX/eiM3Tjn5l/YcTkEcT3qI0zyc3/z9T952z3uAZjm9Pc9a",
-          "certificate": "-----BEGIN CERTIFICATE-----\nMIIEIzCCAwugAwIBAgIUOEviNUrjHJeBSx5V8oDwIPMUbGEwDQYJKoZIhvcNAQEL\nBQAwZzELMAkGA1UEBhMCQkUxEDAOBgNVBAcTB0FudHdlcnAxDjAMBgNVBAoTBU5v\na2lhMRYwFAYDVQQLEw1Db250YWluZXIgbGFiMR4wHAYDVQQDExVtdWx0aXBvZC1s\naXRlIFJvb3QgQ0EwHhcNMjMwMTI2MjAzMjAwWhcNMjQwMTI2MjAzMjAwWjBtMQsw\nCQYDVQQGEwJCRTEQMA4GA1UEBxMHQW50d2VycDEOMAwGA1UEChMFTm9raWExFjAU\nBgNVBAsTDUNvbnRhaW5lciBsYWIxJDAiBgNVBAMTG3BvZDEtZGNndzEubXVsdGlw\nb2QtbGl0ZS5pbzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOPSF+HP\ni3Fn8Qzp37WVCxQnXTr05Obzq01yXIunWSsEYMveLALbKyvWyQ3NKRUTuIfyhchN\nlmUJE1mz4wdrgY8ky/QlBjcbv7VB2zW1WHsuhKiF4kBQa1E8Bf/YKNGs6CDnI88u\n1xIE7ukXcB5T8cSBzZaHSSuS7slFnVmuKo46+BzocVTlEsi1P09B+AD9zdAzSeXF\n5t2a4RfbzGC8PuT0UbP2Mjc99F+9YWsASEhijIDm+o5pmtf0vex87aDtVzSn0G93\nWPemXljNh+NfbzYGmaYRMZf7KEtozbHPJKsro3+0poGV6USq7Kjt6Qih7GdIsvn3\nZg7V1jaO+j2DevMCAwEAAaOBwDCBvTAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0lBBYw\nFAYIKwYBBQUHAwEGCCsGAQUFBwMCMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFAyh\nMoBw7cczzbptm+Cv93cvJs3EMB8GA1UdIwQYMBaAFOAo1vGbeJpPUkdrjTHh/vZz\nWWnqMD4GA1UdEQQ3MDWCCnBvZDEtZGNndzGCCnBvZDEtZGNndzGCG3BvZDEtZGNn\ndzEubXVsdGlwb2QtbGl0ZS5pbzANBgkqhkiG9w0BAQsFAAOCAQEACi8j3gzATZD6\n/+TaBiv7LdihNEoc1xYTKkgTpkU0fiESAyl/Ri3crKNPd0J1LFJuQwZHX57krbZD\nwP59cIfTGdcLMa0LoaRPGTKOgOiVrQr0/xh3iqbCjacHhx+FRjlwKTXFrA16vO07\nw8uMF3/4tACp/5YYtDPRljLgUYOAKGIlyHq5kvac0Pqh2vGx3nMQA2frVE/jqqGh\naAP63RoXNt5L3TRvHpr3GHjtG3EYlKUxwfWCmAn83WIDBrIxKHPIvHMIp4PGCw/+\nVEAChZMrSqM/Q4OqA1vA6Ez5udp/kFpcr+Ddfy70BN35Qm0FSoObIiGu5lhjvd2e\n3RKs4+0KaA==\n-----END CERTIFICATE-----\n",
+          "key": "$aes$czoT8+IOkQEo=$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",
+          "certificate": "-----BEGIN CERTIFICATE-----\nMIIEIzCCAwugAwIBAgIUbt41a2vkKrFA9FGTgrk0VaR2dlgwDQYJKoZIhvcNAQEL\nBQAwZzELMAkGA1UEBhMCQkUxEDAOBgNVBAcTB0FudHdlcnAxDjAMBgNVBAoTBU5v\na2lhMRYwFAYDVQQLEw1Db250YWluZXIgbGFiMR4wHAYDVQQDExVtdWx0aXBvZC1s\naXRlIFJvb3QgQ0EwHhcNMjMwMTI2MjE0MzAwWhcNMjQwMTI2MjE0MzAwWjBtMQsw\nCQYDVQQGEwJCRTEQMA4GA1UEBxMHQW50d2VycDEOMAwGA1UEChMFTm9raWExFjAU\nBgNVBAsTDUNvbnRhaW5lciBsYWIxJDAiBgNVBAMTG3BvZDEtZGNndzEubXVsdGlw\nb2QtbGl0ZS5pbzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALoCe1fK\nzSOu6dbx/MCxght4EZMT0Op+OVGMa76iEqbC0d3PP93OX5c3TgWINDi3567EL1tM\nx97B1Soc7Epj/WbQzIxkadi/7uD9qac/SwAF+/s/WT2XPURJdgs/XDRsoybZ1kYi\nBYd8HcMenF2KVnUrs992dlqYeROOtoefhp7OJU8icEhA3aHSeR362gUXtmOOoOyH\nmyfn/ze+yNYMXMdU5Uh9cQCcWFXrqCZ923GTLCFBG/VZUBcF8doRvGIJwrLgfz7s\n4eQCAlm2Vjf/HyIU3/birIb4Tx55S4+Zhek56GdbVjqqlpibKy3nBsrNOUmmVX/r\naVJ/6UZv+5/HK6UCAwEAAaOBwDCBvTAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0lBBYw\nFAYIKwYBBQUHAwEGCCsGAQUFBwMCMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFKtz\nVHI0eBD0XGtUKLPiwI499sOTMB8GA1UdIwQYMBaAFJSPyEX/xmkE3oSmDqRlz9t8\nZN0gMD4GA1UdEQQ3MDWCCnBvZDEtZGNndzGCCnBvZDEtZGNndzGCG3BvZDEtZGNn\ndzEubXVsdGlwb2QtbGl0ZS5pbzANBgkqhkiG9w0BAQsFAAOCAQEAlYIBn7ZXPkwv\nZvNlwst25I61Dkskn9QLPuTfTRzvA41oSPju5fNaQZ2HfEDLTsL7F6DsljDrqnd5\nZgZuDaNErdUGk6SDU87+cEuE13ZmyRa0Eq1IvxLaO3ke5l2CwIDMkr4LUlQu3Sd0\np5SkJ49nvh3Sd/4XKo1zWvBo+0D34fn52R8TNXGLsfWPKiSWHpvXZyxAuNAZboLF\nuIni9D1XoNheHoF42/N5T75ndiOGWD/puB9Fcpcz7oB8T3MDzpXPb9g/zMkb32uK\n3T+6q0fkeO0RcASC2ujbAhaIEEZttVn52UaEpuieUB5aBF/WT4Pud7Nh2CuWexFO\nmHhoqLKsMw==\n-----END CERTIFICATE-----\n\n",
           "authenticate-client": false
         }
       ]
@@ -2469,6 +2550,153 @@
   },
   "srl_nokia-network-instance:network-instance": [
     {
+      "name": "default",
+      "type": "srl_nokia-network-instance:default",
+      "admin-state": "enable",
+      "interface": [
+        {
+          "name": "ethernet-1/1.0"
+        },
+        {
+          "name": "ethernet-1/2.0"
+        },
+        {
+          "name": "ethernet-1/3.0"
+        },
+        {
+          "name": "lo0.0"
+        }
+      ],
+      "protocols": {
+        "srl_nokia-bgp:bgp": {
+          "autonomous-system": 65001,
+          "router-id": "100.1.0.1",
+          "ebgp-default-policy": {
+            "import-reject-all": false,
+            "export-reject-all": true
+          },
+          "failure-detection": {
+            "enable-bfd": true
+          },
+          "group": [
+            {
+              "group-name": "iBGP-evpn",
+              "admin-state": "enable",
+              "export-policy": "export-all",
+              "import-policy": "import-all",
+              "peer-as": 65500,
+              "evpn": {
+                "admin-state": "enable"
+              },
+              "local-as": [
+                {
+                  "as-number": 65500
+                }
+              ],
+              "route-reflector": {
+                "client": true,
+                "cluster-id": "0.0.0.11"
+              },
+              "transport": {
+                "local-address": "100.1.0.1"
+              }
+            },
+            {
+              "group-name": "iBGP-rr",
+              "admin-state": "enable",
+              "export-policy": "export-all",
+              "import-policy": "import-all",
+              "peer-as": 65500,
+              "evpn": {
+                "admin-state": "enable"
+              },
+              "local-as": [
+                {
+                  "as-number": 65500
+                }
+              ],
+              "transport": {
+                "local-address": "100.1.0.1"
+              }
+            },
+            {
+              "group-name": "rrs",
+              "admin-state": "enable"
+            },
+            {
+              "group-name": "spines",
+              "admin-state": "enable"
+            }
+          ],
+          "ipv4-unicast": {
+            "multipath": {
+              "max-paths-level-1": 64,
+              "max-paths-level-2": 64
+            }
+          },
+          "neighbor": [
+            {
+              "peer-address": "21.1.1.1",
+              "admin-state": "enable",
+              "export-policy": "export-loopbacks",
+              "peer-as": 65010,
+              "peer-group": "spines",
+              "failure-detection": {
+                "enable-bfd": true,
+                "fast-failover": true
+              }
+            },
+            {
+              "peer-address": "21.2.1.1",
+              "admin-state": "enable",
+              "export-policy": "export-loopbacks",
+              "peer-as": 65010,
+              "peer-group": "spines",
+              "failure-detection": {
+                "enable-bfd": true,
+                "fast-failover": true
+              }
+            },
+            {
+              "peer-address": "100.0.0.1",
+              "admin-state": "enable",
+              "peer-group": "iBGP-rr",
+              "transport": {
+                "local-address": "100.1.0.1"
+              }
+            },
+            {
+              "peer-address": "101.1.2.1",
+              "admin-state": "enable",
+              "peer-group": "iBGP-evpn",
+              "transport": {
+                "local-address": "100.1.0.1"
+              }
+            },
+            {
+              "peer-address": "101.1.2.3",
+              "admin-state": "enable",
+              "peer-group": "iBGP-evpn",
+              "transport": {
+                "local-address": "100.1.0.1"
+              }
+            },
+            {
+              "peer-address": "192.168.11.0",
+              "admin-state": "enable",
+              "export-policy": "export-loopbacks",
+              "peer-as": 65000,
+              "peer-group": "rrs",
+              "failure-detection": {
+                "enable-bfd": true,
+                "fast-failover": true
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
       "name": "mgmt",
       "type": "srl_nokia-network-instance:ip-vrf",
       "admin-state": "enable",
@@ -2486,5 +2714,44 @@
         }
       }
     }
-  ]
+  ],
+  "srl_nokia-routing-policy:routing-policy": {
+    "prefix-set": [
+      {
+        "name": "loopbacks",
+        "prefix": [
+          {
+            "ip-prefix": "100.0.0.0/8",
+            "mask-length-range": "8..32"
+          },
+          {
+            "ip-prefix": "101.0.0.0/8",
+            "mask-length-range": "8..32"
+          }
+        ]
+      }
+    ],
+    "policy": [
+      {
+        "name": "export-all"
+      },
+      {
+        "name": "export-loopbacks",
+        "statement": [
+          {
+            "sequence-id": 10,
+            "match": {
+              "prefix-set": "loopbacks"
+            },
+            "action": {
+              "policy-result": "accept"
+            }
+          }
+        ]
+      },
+      {
+        "name": "import-all"
+      }
+    ]
+  }
 }

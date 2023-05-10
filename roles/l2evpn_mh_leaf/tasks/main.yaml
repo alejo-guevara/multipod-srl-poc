@@ -8,7 +8,7 @@
   uri:
         url: http://{{ansible_host}}:80/jsonrpc
         user: admin
-        password: admin
+        password: NokiaSrl1!
         method: POST
         body: "{{ lookup('template', 'vlan_interface.j2') }}"
         force_basic_auth: yes
@@ -21,7 +21,7 @@
   uri:
         url: http://{{ansible_host}}:80/jsonrpc
         user: admin
-        password: admin
+        password: NokiaSrl1!
         method: POST
         body: "{{ lookup('template', 'routing_policy.j2') }}"
         force_basic_auth: yes
@@ -31,7 +31,7 @@
   uri:
         url: http://{{ansible_host}}:80/jsonrpc
         user: admin
-        password: admin
+        password: NokiaSrl1!
         method: POST
         body: "{{ lookup('template', 'ibgp_leaf.j2') }}"
         force_basic_auth: yes
@@ -42,7 +42,7 @@
   uri:
         url: http://{{ansible_host}}:80/jsonrpc
         user: admin
-        password: admin
+        password: NokiaSrl1!
         method: POST
         body: "{{ lookup('template', 'tunnel_vxlan.j2') }}"
         force_basic_auth: yes
@@ -53,7 +53,7 @@
   uri:
         url: http://{{ansible_host}}:80/jsonrpc
         user: admin
-        password: admin
+        password: NokiaSrl1!
         method: POST
         body: "{{ lookup('template', 'mac_vrf.j2') }}"
         force_basic_auth: yes
@@ -64,7 +64,7 @@
   uri:
         url: http://{{ansible_host}}:80/jsonrpc
         user: admin
-        password: admin
+        password: NokiaSrl1!
         method: POST
         body: "{{ lookup('template', 'interface_lag.j2') }}"
         force_basic_auth: yes
@@ -75,7 +75,7 @@
   uri:
         url: http://{{ansible_host}}:80/jsonrpc
         user: admin
-        password: admin
+        password: NokiaSrl1!
         method: POST
         body: "{{ lookup('template', 'ethernet_segment.j2') }}"
         force_basic_auth: yes

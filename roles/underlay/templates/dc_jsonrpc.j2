@@ -104,7 +104,7 @@
                         {
                             "name": "{{ routing_policy.policy_name }}",
                             "default-action": {
-                            "reject": {}
+                            "bgp": {}
                             },
                             "statement": [
                             {
@@ -113,7 +113,7 @@
                                 "prefix-set": "{{ routing_policy.prefix_set_name }}"
                                 },
                                 "action": {
-                                "accept": {}
+                                "policy-result": "accept"
                                 }
                             }
                             ]

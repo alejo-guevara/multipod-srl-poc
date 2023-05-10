@@ -6,7 +6,7 @@
   uri:
         url: http://{{ansible_host}}:80/jsonrpc
         user: admin
-        password: admin
+        password: NokiaSrl1!
         method: POST
         body: "{{ lookup('template', 'dc_jsonrpc.j2') }}"
         force_basic_auth: yes
