@@ -1,0 +1,46 @@
+all:
+  children:
+    linux:
+      hosts:
+        client11:
+          ansible_host: 171.0.0.31
+        client112:
+          ansible_host: 171.0.0.32
+        client12:
+          ansible_host: 171.0.0.33
+        client13:
+          ansible_host: 171.0.0.34
+        client134:
+          ansible_host: 171.0.0.35
+        client14:
+          ansible_host: 171.0.0.36
+        gnmic:
+          ansible_host: 171.0.0.2
+        grafana:
+          ansible_host: 171.0.0.50
+        influxdb:
+          ansible_host: 171.0.0.52
+        prometheus:
+          ansible_host: 171.0.0.3
+        tacacs:
+          ansible_host: 171.0.0.55
+        telegraf:
+          ansible_host: 171.0.0.51
+    srl:
+      hosts:
+        pod1-dcgw1:
+          ansible_host: 171.1.1.1
+        pod1-leaf1:
+          ansible_host: 171.1.0.1
+        pod1-leaf2:
+          ansible_host: 171.1.0.2
+        pod1-leaf3:
+          ansible_host: 171.1.0.3
+        pod1-leaf4:
+          ansible_host: 171.1.0.4
+        pod1-spine1:
+          ansible_host: 171.1.1.0
+        pod1-spine2:
+          ansible_host: 171.1.2.0
+        rr:
+          ansible_host: 171.0.0.255

@@ -1,0 +1,827 @@
+{
+  "name": "multipod-lite",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "",
+      "mgmt": {
+        "network": "oob_mgmt",
+        "bridge": "br-d88c4888ad49",
+        "ipv4-subnet": "171.0.0.0/8",
+        "ipv4-gw": "171.0.0.1",
+        "mtu": "1500",
+        "external-access": true
+      }
+    }
+  },
+  "nodes": {
+    "client11": {
+      "index": "0",
+      "shortname": "client11",
+      "longname": "client11",
+      "fqdn": "client11.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/client11",
+      "kind": "linux",
+      "image": "ghcr.io/hellt/network-multitool",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.0.0.31",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/client11",
+        "clab-node-name": "client11",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "client112": {
+      "index": "1",
+      "shortname": "client112",
+      "longname": "client112",
+      "fqdn": "client112.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/client112",
+      "kind": "linux",
+      "image": "ghcr.io/hellt/network-multitool",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.0.0.32",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/client112",
+        "clab-node-name": "client112",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "client12": {
+      "index": "2",
+      "shortname": "client12",
+      "longname": "client12",
+      "fqdn": "client12.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/client12",
+      "kind": "linux",
+      "image": "ghcr.io/hellt/network-multitool",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.0.0.33",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/client12",
+        "clab-node-name": "client12",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "client13": {
+      "index": "3",
+      "shortname": "client13",
+      "longname": "client13",
+      "fqdn": "client13.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/client13",
+      "kind": "linux",
+      "image": "ghcr.io/hellt/network-multitool",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.0.0.34",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/client13",
+        "clab-node-name": "client13",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "client134": {
+      "index": "4",
+      "shortname": "client134",
+      "longname": "client134",
+      "fqdn": "client134.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/client134",
+      "kind": "linux",
+      "image": "ghcr.io/hellt/network-multitool",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.0.0.35",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/client134",
+        "clab-node-name": "client134",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "client14": {
+      "index": "5",
+      "shortname": "client14",
+      "longname": "client14",
+      "fqdn": "client14.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/client14",
+      "kind": "linux",
+      "image": "ghcr.io/hellt/network-multitool",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.0.0.36",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/client14",
+        "clab-node-name": "client14",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "gnmic": {
+      "index": "6",
+      "shortname": "gnmic",
+      "longname": "gnmic",
+      "fqdn": "gnmic.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/gnmic",
+      "kind": "linux",
+      "image": "ghcr.io/karimra/gnmic:0.18.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.0.0.2",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/gnmic",
+        "clab-node-name": "gnmic",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "grafana": {
+      "index": "7",
+      "shortname": "grafana",
+      "longname": "grafana",
+      "fqdn": "grafana.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/grafana",
+      "kind": "linux",
+      "image": "grafana/grafana:8.1.8",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.0.0.50",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/grafana",
+        "clab-node-name": "grafana",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "influxdb": {
+      "index": "8",
+      "shortname": "influxdb",
+      "longname": "influxdb",
+      "fqdn": "influxdb.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/influxdb",
+      "kind": "linux",
+      "image": "influxdb:1.8",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.0.0.52",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/influxdb",
+        "clab-node-name": "influxdb",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "pod1-dcgw1": {
+      "index": "9",
+      "shortname": "pod1-dcgw1",
+      "longname": "pod1-dcgw1",
+      "fqdn": "pod1-dcgw1.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/pod1-dcgw1",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.1.1.1",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/pod1-dcgw1",
+        "clab-node-name": "pod1-dcgw1",
+        "clab-node-type": "ixr6",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "pod1-leaf1": {
+      "index": "10",
+      "shortname": "pod1-leaf1",
+      "longname": "pod1-leaf1",
+      "fqdn": "pod1-leaf1.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/pod1-leaf1",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.1.0.1",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/pod1-leaf1",
+        "clab-node-name": "pod1-leaf1",
+        "clab-node-type": "ixrd2",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "pod1-leaf2": {
+      "index": "11",
+      "shortname": "pod1-leaf2",
+      "longname": "pod1-leaf2",
+      "fqdn": "pod1-leaf2.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/pod1-leaf2",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.1.0.2",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/pod1-leaf2",
+        "clab-node-name": "pod1-leaf2",
+        "clab-node-type": "ixrd2",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "pod1-leaf3": {
+      "index": "12",
+      "shortname": "pod1-leaf3",
+      "longname": "pod1-leaf3",
+      "fqdn": "pod1-leaf3.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/pod1-leaf3",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.1.0.3",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/pod1-leaf3",
+        "clab-node-name": "pod1-leaf3",
+        "clab-node-type": "ixrd2",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "pod1-leaf4": {
+      "index": "13",
+      "shortname": "pod1-leaf4",
+      "longname": "pod1-leaf4",
+      "fqdn": "pod1-leaf4.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/pod1-leaf4",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.1.0.4",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/pod1-leaf4",
+        "clab-node-name": "pod1-leaf4",
+        "clab-node-type": "ixrd2",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "pod1-spine1": {
+      "index": "14",
+      "shortname": "pod1-spine1",
+      "longname": "pod1-spine1",
+      "fqdn": "pod1-spine1.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/pod1-spine1",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.1.1.0",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/pod1-spine1",
+        "clab-node-name": "pod1-spine1",
+        "clab-node-type": "ixrd3",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "pod1-spine2": {
+      "index": "15",
+      "shortname": "pod1-spine2",
+      "longname": "pod1-spine2",
+      "fqdn": "pod1-spine2.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/pod1-spine2",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.1.2.0",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/pod1-spine2",
+        "clab-node-name": "pod1-spine2",
+        "clab-node-type": "ixrd3",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "prometheus": {
+      "index": "16",
+      "shortname": "prometheus",
+      "longname": "prometheus",
+      "fqdn": "prometheus.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/prometheus",
+      "kind": "linux",
+      "image": "prom/prometheus:v2.23.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.0.0.3",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/prometheus",
+        "clab-node-name": "prometheus",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "rr": {
+      "index": "17",
+      "shortname": "rr",
+      "longname": "rr",
+      "fqdn": "rr.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/rr",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.0.0.255",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/rr",
+        "clab-node-name": "rr",
+        "clab-node-type": "ixr6",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "tacacs": {
+      "index": "18",
+      "shortname": "tacacs",
+      "longname": "tacacs",
+      "fqdn": "tacacs.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/tacacs",
+      "kind": "linux",
+      "image": "dchidell/docker-tacacs",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.0.0.55",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/tacacs",
+        "clab-node-name": "tacacs",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    },
+    "telegraf": {
+      "index": "19",
+      "shortname": "telegraf",
+      "longname": "telegraf",
+      "fqdn": "telegraf.multipod-lite.io",
+      "group": "",
+      "labdir": "/root/multipod-srl-poc/clab-multipod-lite/telegraf",
+      "kind": "linux",
+      "image": "telegraf",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "171.0.0.51",
+      "mgmt-ipv4-prefix-length": 8,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d88c4888ad49",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/root/multipod-srl-poc/clab-multipod-lite/telegraf",
+        "clab-node-name": "telegraf",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/multipod-srl-poc/multipod-lite.yaml",
+        "containerlab": "multipod-lite"
+      }
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "rr",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:29:68:f3",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-dcgw1",
+        "interface": "e1-3",
+        "mac": "aa:c1:ab:c4:4e:e7",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "pod1-spine1",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:3e:ce:0c",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-dcgw1",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:1b:fa:43",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "pod1-spine2",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:2c:d9:a6",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-dcgw1",
+        "interface": "e1-2",
+        "mac": "aa:c1:ab:f4:ec:b1",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "pod1-leaf1",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:17:36:a4",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-spine1",
+        "interface": "e1-11",
+        "mac": "aa:c1:ab:5c:69:2e",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "pod1-leaf1",
+        "interface": "e1-2",
+        "mac": "aa:c1:ab:b3:ea:a4",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-spine2",
+        "interface": "e1-11",
+        "mac": "aa:c1:ab:21:67:f9",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "pod1-leaf2",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:51:f7:1e",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-spine1",
+        "interface": "e1-12",
+        "mac": "aa:c1:ab:7d:1e:d8",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "pod1-leaf2",
+        "interface": "e1-2",
+        "mac": "aa:c1:ab:ba:33:30",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-spine2",
+        "interface": "e1-12",
+        "mac": "aa:c1:ab:1e:fd:5a",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "pod1-leaf3",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:a6:c8:d2",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-spine1",
+        "interface": "e1-13",
+        "mac": "aa:c1:ab:77:98:60",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "pod1-leaf3",
+        "interface": "e1-2",
+        "mac": "aa:c1:ab:8e:41:7e",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-spine2",
+        "interface": "e1-13",
+        "mac": "aa:c1:ab:f7:c8:a5",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "pod1-leaf4",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:d4:eb:20",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-spine1",
+        "interface": "e1-14",
+        "mac": "aa:c1:ab:46:ae:0c",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "pod1-leaf4",
+        "interface": "e1-2",
+        "mac": "aa:c1:ab:f1:85:2e",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-spine2",
+        "interface": "e1-14",
+        "mac": "aa:c1:ab:8f:ce:61",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "client11",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:b2:c4:8f",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-leaf1",
+        "interface": "e1-11",
+        "mac": "aa:c1:ab:9e:80:62",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "client112",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:54:1d:89",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-leaf1",
+        "interface": "e1-12",
+        "mac": "aa:c1:ab:3d:6b:a3",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "client112",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:36:96:ab",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-leaf2",
+        "interface": "e1-12",
+        "mac": "aa:c1:ab:54:0d:44",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "client12",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:c3:8d:d4",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-leaf2",
+        "interface": "e1-11",
+        "mac": "aa:c1:ab:23:10:bd",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "client13",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:87:88:39",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-leaf3",
+        "interface": "e1-11",
+        "mac": "aa:c1:ab:40:c6:d5",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "client134",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:fe:da:4e",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-leaf3",
+        "interface": "e1-12",
+        "mac": "aa:c1:ab:ca:fd:3c",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "client134",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:27:12:b0",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-leaf4",
+        "interface": "e1-12",
+        "mac": "aa:c1:ab:68:95:d1",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "client14",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:74:a5:e3",
+        "peer": "z"
+      },
+      "z": {
+        "node": "pod1-leaf4",
+        "interface": "e1-11",
+        "mac": "aa:c1:ab:35:4b:7a",
+        "peer": "a"
+      }
+    }
+  ]
+}

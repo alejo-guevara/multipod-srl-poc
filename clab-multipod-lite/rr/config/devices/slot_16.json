@@ -1,0 +1,18 @@
+{
+ "slot_num": 16,
+ "card_type": 69,
+ "mda_type": 0,
+ "base_mac": {
+  "mac_address": "GlARAAAA"
+ },
+ "mac_count": 0,
+ "chassis_type": 42,
+ "card_deviation": 0,
+ "is_combined_system": true,
+ "active_cpm_slot_num": 16,
+ "version": 1,
+ "card_mfg_assembly": "",
+ "pd_type": 1,
+ "card_revision": 0,
+ "card_mac_count": 0
+}
