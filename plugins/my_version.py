@@ -4,6 +4,7 @@ from srlinux.mgmt.cli import CliPlugin
 from srlinux.mgmt.server.server_error import ServerError
 from srlinux.schema import FixedSchemaRoot
 from srlinux.syntax import Syntax
+from datetime import datetime
 
 
 class Plugin(CliPlugin):
@@ -41,6 +42,7 @@ class Plugin(CliPlugin):
         root.add_child(
             'basic system info',
             fields=[
+                'Que hora es?',
                 'Hostname',
                 'Chassis Type',
                 'Part Number',
@@ -84,6 +86,7 @@ class Plugin(CliPlugin):
     def _populate_data(self, state, arguments):
         result = Data(arguments.schema)
         data = result.basic_system_info.create()
+        data.current_time = str(datetime.now())
 
         data.hostname = '<Unknown>'
         if self._hostname_data:
