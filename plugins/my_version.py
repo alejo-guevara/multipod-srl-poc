@@ -1,4 +1,4 @@
-from srlinux.data import TagValueFormatter, Border, Data
+from srlinux.data import TagValueFormatter, Border, Data, ColumnFormatter
 from srlinux.location import build_path
 from srlinux.mgmt.cli import CliPlugin
 from srlinux.mgmt.server.server_error import ServerError
@@ -138,4 +138,4 @@ class Plugin(CliPlugin):
         return result
 
     def _set_formatters(self, data):
-        data.set_formatter('/basic system info', Border(TagValueFormatter(), Border.Above | Border.Below))
+        data.set_formatter('/basic system info', Border(ColumnFormatter(), Border.Above | Border.Below))
